@@ -1,0 +1,18 @@
+<p id="notice"><%= notice %></p>
+
+<div class="card text-center">
+  <h5 class="card-header">Información</h5>
+  <div class="card-body">
+    <h5 class="card-title">
+      Numero:
+      <%= @apartment.numero %>
+    </h5>
+    
+    <p class="card-text">
+      <strong>Edificio:</strong>
+      <%= @apartment.building.nombre %>
+    </p>
+    <%= link_to 'Editar', edit_apartment_path(@apartment), :class => "btn btn-link" %> |
+    <%= link_to 'Index departamentos', apartments_path, :class => "btn btn-link" %>
+  </div>
+</div>

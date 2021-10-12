@@ -1,0 +1,31 @@
+<%= form_with(model: apartment) do |form| %>
+  <% if apartment.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(apartment.errors.count, 'error impidió', plural: 'errores impidieron') %> que este departamento se guardara:</h2>
+
+      <ul>
+        <% apartment.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="mb-3">
+    <%= form.label :numero, class: 'form-label' %>
+    <%= form.text_field :numero, class: 'form-control' %>
+  </div>
+
+  <div class="mb-3">
+    <%= form.label 'Edificio', class: 'form-label' %>
+    <% if apartment.building %>
+      <%= form.select :building_id, options_from_collection_for_select(buildings, :id, :nombre, selected_key = apartment.id),{}, {class: 'form-select'}%>
+    <% else %>
+      <%= form.select :building_id, options_from_collection_for_select(buildings, :id, :nombre),{}, {class: 'form-select'} %>
+    <% end %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit :class => 'btn btn-outline-dark' %>
+  </div>
+<% end %>

@@ -1,0 +1,35 @@
+<p id="notice"><%= notice %></p>
+
+<div class="card text-center">
+  <h5 class="card-header">Información</h5>
+  <div class="card-body">
+    
+    <h5 class="card-title">
+      Nombre del edificio:
+      <%= @building.nombre %>
+    </h5>
+
+    <p class="card-text">
+      <strong>Direccion:</strong>
+      <%= @building.direccion %>
+    </p>
+
+    <p class="card-text">
+      <strong>Ciudad:</strong>
+      <%= @building.ciudad %>
+    </p>
+
+    <p class="card-text"><strong>Departamentos:</strong></p>
+
+    <ul class="list-group">
+      <% @building.apartments.each do |departamento| %>
+        <li class="list-group-item">
+            <strong>Número:</strong> <%= departamento.numero%>
+        </li>
+      <% end %>
+    </ul>
+
+    <%= link_to 'Editar', edit_building_path(@building), :class => "btn btn-link" %> 
+    <%= link_to 'Index edificios', buildings_path, :class => "btn btn-link"%>
+  </div>
+</div>
